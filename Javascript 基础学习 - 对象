@@ -1,0 +1,57 @@
+Javascript 基础学习 - 对象
+
+对象是js的基本数据类型。
+这种数据结构有很多叫法：“散列” “散列表” “字典” “关联数组”等
+对象除了可以保持自己的属性外，还会从一个叫原型的对象继承属性；对象的方法通常是继承的属性，“原型继承”是js的核心特征
+
+对象是可变的，我们通过引用而非值操作对象，如果var y = x,再去修改y，变量x亦会受到影响
+
+除了属性之外，每个对象还有3个相关的对象特性：
+对象的原型(prototype)指向另一个对象，其又继承自它的原型对象
+对象的类是一个标示对象类型的字符串
+对象的扩展标记指明了是否向对象中添加属性
+
+三类js对象 和 两类属性：
+内置对象 数组 函数 日期等
+宿主对象 js解释器嵌入的环境（web浏览器）定义的
+自定义对象
+
+自有属性
+继承属性 原型对象中定义的
+
+创建对象3中方法： 对象直接量 var obj = {};关键字 new; Object.create()
+
+getter setter 存储器属性
+var o = {
+	x: 1.0,
+	y: 1.0,
+
+	get r() {return Math.sqrt(this.x*this.x + this.y*this.y);},
+	set r(newValue) {
+		var oldValue = Math.sqrt(this.x*this.x + this.y*this.y);
+		var ratior = newValue/oldValue;
+		this.x *= ratio;
+		this.y *= ratio;
+	},
+
+	get theta() {return Math.atan2(this.y, this.x);}
+}
+
+var s = {
+	$n: 0,
+
+	get next() { return this.$n++},
+
+	set next(n) {
+		if (n > this.$n) this.$n = n;
+		else throw "不能比当前小";
+	}
+};
+$符号 标示属性为私有属性
+
+原型属性：
+var o = {} 通过直接量创建的对象，使用Object.prototype作为其原型
+通过new创建的对象，使用构造函数的prototype属性作为其原型
+通过Object.create()创建的对象，使用第一个参数（也可以是null）作为其原型
+
+Object.getPrototypeOf(o)查看o对象的原型

@@ -1,0 +1,44 @@
+函数调用：
+
+作为函数
+作为方法
+作为构造函数
+通过他们的call()和apply()方法间接调用
+
+
+//可选的形参
+function getPropertyNames(o, a) {
+	if (a === undefined) a = []; //更好的表达方式 var a; a = a || []; //必需先声明a
+	for(var p in o) {
+		a.push(p);
+	}
+	return a;
+}
+//调用
+var a = getPropertyNames(o);
+getPropertyNames(o, a);
+
+//可变长实参列表：实参对象 arguments
+function max(/* ... */) {
+	var max = Number.NEGTIVE.INFINITY;
+	for(var i = 0;i<arguments.length;i++) {
+		if (arguments[i] > max) max = arguments[i];
+	}
+	return max
+}
+//arguments 不是一个真正的数组，他是一个实参对象
+
+
+作为命名空间的函数
+function myModule() {
+	
+}
+myModule();
+
+将函数定义为全局变量，然后直接调用 //另一种表达方式，立即调用式
+(function() {
+	
+}())
+
+////每一个函数都有一个prototype属性，这个属性指向一个对象的引用，这个对象称为原型对象。
+
