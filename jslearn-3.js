@@ -16,8 +16,8 @@ Object.keys(ob) //["p", "q"]
 var o = {};
 o.p = 1;
 //删除可以赋值为undefined
-o.p = undefined；//或者用
-delete o.p；
+o.p = undefined;//或者用
+delete o.p;
 
 //对象引用
 //不同变量指向同一对象，那么他们都是这个对象的引用，
